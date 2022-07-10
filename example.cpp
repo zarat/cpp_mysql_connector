@@ -37,22 +37,8 @@ void use_mysql_connector() {
 	}
 }
 
-void use_thread_pool() {
-	thread_pool tp{ 5, SERVER, USER, PASSWORD, DATABASE };
-	for (int i = 0; i < 30; ++i) {
-		const char* ptr = "insert into test_blob values('aaaaa\0aaaaa')";
-		string sql{ ptr, ptr + sizeof("insert into test_blob values('aaaaa\0aaaaa')") };
-		tp.push(sql);
-		//char buf[1024];
-		//snprintf(buf, 1024,  "insert into test_blob values ('\1\1\1\1\0\1\1');", i);
-		//tp.push(buf);
-	}
-}
-
-
 int main() {
-	//use_mysql_connector();
-	use_thread_pool();
+	use_mysql_connector();
 	return 0;
 }
 
